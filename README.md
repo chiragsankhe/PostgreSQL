@@ -61,4 +61,68 @@ A **DBMS** is:
 | ---------------------- | ------------------------------------ |
 | Collection of data     | Software to manage that data         |
 | Just stores data       | Helps perform operations on the data |
-| Can exist without DBMS | DBMS needs a database to work on     |
+| Can exist without DBMS | DBMS needs a database to work on     | 
+
+
+
+
+
+---
+
+### ✅ Features of DBMS:
+
+* Store, retrieve, update, delete data
+* Query support
+* Security and backup
+
+---
+
+### 🔧 Examples of DBMS:
+
+* PostgreSQL
+* MySQL
+* Oracle
+* SQLite
+
+---
+
+### 🆚 Database vs DBMS:
+
+* **Database**: Holds data
+* **DBMS**: Manages that data
+
+---
+
+# ✅ Create Database (pgAdmin)
+
+1. Open pgAdmin
+2. Right-click `Databases` → `Create` → `Database...`
+3. Enter name → Click `Save`
+
+---
+
+# ❌ Delete Database (pgAdmin)
+
+1. Open pgAdmin
+2. Right-click target DB → Click `Delete/Drop`
+3. Confirm
+
+---
+
+### 💡 SQL Commands
+
+```sql
+-- Create Database
+CREATE DATABASE my_database;
+
+-- Delete Database (not the one you're connected to)
+DROP DATABASE my_database;
+
+-- Switch Database
+\c another_database
+```
+
+---
+
+✅ Use `pgAdmin` for GUI or `psql` for command-line practice.
+

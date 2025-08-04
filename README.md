@@ -124,24 +124,28 @@ DROP DATABASE my_database;
 
 ---
 
-✅ Use `pgAdmin` for GUI or `psql` for command-line practice.
+### ✅ Use `pgAdmin` for GUI or `psql` for command-line practice.
 
-
--- ✅ Create Table
+```
+#####  ✅ Create Table
 CREATE TABLE people (
   id SERIAL PRIMARY KEY,
   name VARCHAR(100),
   city VARCHAR(100)
 );
 
--- ✅ Insert Values
+```
+
+#### ✅ Insert Values
+```
 INSERT INTO people (name, city) VALUES
 ('Chirag', 'Boisar'),
 ('Aisha', 'Mumbai'),
 ('Rahul', 'Delhi');
 
-
--- ✅ Read Table
+```
+--
+#### ✅ Read Table
 SELECT * FROM people;
 
 -- 📋 Output:
@@ -151,23 +155,28 @@ SELECT * FROM people;
 --  2  | Aisha   | Mumbai
 --  3  | Rahul   | Delhi
 
--- update table 
+--
+#### update table 
 
+```
 update person
 set name = 'yadnesh'
 where name = 'pranjal';
+```
 
-
+```
 update person
 set name = 'chirag sankhe'
 where id = 101;
-
---delete table column 
+```
+--
+#### delete table column 
+```
 delete from person 
 where id = 103;
 
 
-
+```
 
 # PostgreSQL Data Types and Constraints
 

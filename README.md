@@ -148,12 +148,12 @@ INSERT INTO people (name, city) VALUES
 #### ✅ Read Table
 SELECT * FROM people;
 
--- 📋 Output:
--- id |  name   |  city
--- ----+---------+--------
---  1  | Chirag  | Boisar
---  2  | Aisha   | Mumbai
---  3  | Rahul   | Delhi
+ 📋 Output:
+| id |  name   |  city|
+|----|---------|--------|
+| 1  | Chirag  | Boisar |
+ |2  | Aisha   | Mumbai |
+|3  | Rahul   | Delhi    |
 
 --
 #### update table 

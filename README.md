@@ -144,7 +144,7 @@ INSERT INTO people (name, city) VALUES
 ('Rahul', 'Delhi');
 
 ```
---
+---
 #### ✅ Read Table
 SELECT * FROM people;
 
@@ -155,7 +155,7 @@ SELECT * FROM people;
  |2  | Aisha   | Mumbai |
 |3  | Rahul   | Delhi    |
 
---
+---
 #### update table 
 
 ```
@@ -169,7 +169,7 @@ update person
 set name = 'chirag sankhe'
 where id = 101;
 ```
---
+---
 #### delete table column 
 ```
 delete from person 
@@ -178,6 +178,7 @@ where id = 103;
 
 ```
 
+---
 # PostgreSQL Data Types and Constraints
 
 ## ✅ Common Data Types

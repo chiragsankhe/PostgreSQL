@@ -272,12 +272,9 @@ PostgreSQL provides a rich set of data types to handle various kinds of data. He
 ```sql
 CREATE TYPE mood AS ENUM ('happy', 'sad', 'neutral');
 
-
-
-
 ---
 
-##  Types of Constraints in PostgreSQL
+##   Types of Constraints in PostgreSQL
 
 ### 🔹 1. NOT NULL
 Ensures a column **cannot have NULL values**.
@@ -401,6 +398,7 @@ Add FOREIGN KEY:
 sql
 Copy
 Edit
+
 ALTER TABLE employees
 ADD CONSTRAINT fk_dept FOREIGN KEY (department_id) REFERENCES departments(dept_id);
 yaml
@@ -409,20 +407,10 @@ Edit
 
 ---
 
-Would you like me to combine this and the previous one (data types) into a single `.md` file too?
 
 
 
 
-
-
-
-
-Ask ChatGPT
-
-
-
-Tools
 
 
 

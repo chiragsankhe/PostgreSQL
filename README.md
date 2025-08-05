@@ -277,7 +277,7 @@ CREATE TYPE mood AS ENUM ('happy', 'sad', 'neutral');
 
 ---
 
-## 🧱 Types of Constraints in PostgreSQL
+##  Types of Constraints in PostgreSQL
 
 ### 🔹 1. NOT NULL
 Ensures a column **cannot have NULL values**.

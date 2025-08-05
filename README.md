@@ -207,3 +207,67 @@ where id = 103;
 | `DEFAULT`         | Default value if not specified                                          | `city VARCHAR(100) DEFAULT 'Unknown'`          |
 | `CHECK`           | Value must satisfy a condition                                          | `age INT CHECK (age >= 18)`                    |
 | `FOREIGN KEY`     | Links to a primary key in another table                                 | `FOREIGN KEY (user_id) REFERENCES users(id)`   |
+
+
+
+# PostgreSQL Data Types
+
+PostgreSQL provides a rich set of data types to handle various kinds of data. Here’s a categorized overview:
+
+---
+
+## 🔹 1. Numeric Types
+
+| Data Type         | Description                          |
+|-------------------|--------------------------------------|
+| `SMALLINT`        | 2-byte integer (-32,768 to 32,767)   |
+| `INTEGER` / `INT` | 4-byte integer                       |
+| `BIGINT`          | 8-byte integer                       |
+| `DECIMAL(p,s)`    | Exact numeric with precision & scale |
+| `NUMERIC(p,s)`    | Same as `DECIMAL`                    |
+| `REAL`            | 4-byte floating point number         |
+| `DOUBLE PRECISION`| 8-byte floating point number         |
+| `SERIAL`          | Auto-incrementing 4-byte integer     |
+| `BIGSERIAL`       | Auto-incrementing 8-byte integer     |
+
+---
+
+## 🔹 2. Character Types
+
+| Data Type       | Description                                 |
+|------------------|---------------------------------------------|
+| `CHAR(n)`        | Fixed-length string, space-padded           |
+| `VARCHAR(n)`     | Variable-length string (limit: n)           |
+| `TEXT`           | Unlimited length text string                |
+
+---
+
+## 🔹 3. Date and Time Types
+
+| Data Type           | Description                             |
+|----------------------|-----------------------------------------|
+| `DATE`              | Calendar date (YYYY-MM-DD)              |
+| `TIME`              | Time of day (no timezone)               |
+| `TIMESTAMP`         | Date and time (no timezone)             |
+| `TIMESTAMPTZ`       | Timestamp with timezone                  |
+| `INTERVAL`          | Time span (e.g., 2 days 3 hours)         |
+
+---
+
+## 🔹 4. Boolean Type
+
+| Data Type | Description              |
+|------------|--------------------------|
+| `BOOLEAN`  | `TRUE`, `FALSE`, or `NULL` |
+
+---
+
+## 🔹 5. Enumerated Type
+
+| Data Type   | Description                              |
+|--------------|------------------------------------------|
+| `ENUM`       | User-defined set of valid values         |
+
+### Example:
+```sql
+CREATE TYPE mood AS ENUM ('happy', 'sad', 'neutral');

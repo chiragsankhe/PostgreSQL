@@ -271,3 +271,158 @@ PostgreSQL provides a rich set of data types to handle various kinds of data. He
 ### Example:
 ```sql
 CREATE TYPE mood AS ENUM ('happy', 'sad', 'neutral');
+
+
+
+
+---
+
+## 🧱 Types of Constraints in PostgreSQL
+
+### 🔹 1. NOT NULL
+Ensures a column **cannot have NULL values**.
+
+```sql
+CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
+);
+🔹 2. UNIQUE
+Ensures all values in a column or group of columns are unique.
+
+sql
+Copy
+Edit
+CREATE TABLE employees (
+    email VARCHAR(100) UNIQUE
+);
+Table-level UNIQUE constraint:
+
+sql
+Copy
+Edit
+CREATE TABLE employees (
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    CONSTRAINT unique_full_name UNIQUE (first_name, last_name)
+);
+🔹 3. PRIMARY KEY
+Combines UNIQUE and NOT NULL
+
+Only one per table
+
+Can be single or composite
+
+sql
+Copy
+Edit
+CREATE TABLE departments (
+    dept_id INT PRIMARY KEY,
+    dept_name VARCHAR(100) NOT NULL
+);
+Composite primary key:
+
+sql
+Copy
+Edit
+CREATE TABLE enrollments (
+    student_id INT,
+    course_id INT,
+    PRIMARY KEY (student_id, course_id)
+);
+🔹 4. FOREIGN KEY
+Enforces referential integrity between tables.
+
+sql
+Copy
+Edit
+CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    department_id INT,
+    CONSTRAINT fk_department FOREIGN KEY (department_id) REFERENCES departments(dept_id)
+);
+With actions:
+
+sql
+Copy
+Edit
+ON DELETE CASCADE
+ON UPDATE SET NULL
+🔹 5. CHECK
+Ensures values meet a specific condition.
+
+sql
+Copy
+Edit
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    price DECIMAL(10, 2) CHECK (price > 0),
+    stock INT CHECK (stock >= 0)
+);
+🔹 6. DEFAULT
+Sets a default value for a column if none is provided.
+
+sql
+Copy
+Edit
+CREATE TABLE customers (
+    id SERIAL PRIMARY KEY,
+    country VARCHAR(50) DEFAULT 'India'
+);
+🔹 7. EXCLUDE
+Prevents certain combinations of values using USING clause.
+
+sql
+Copy
+Edit
+CREATE TABLE bookings (
+    room INT,
+    during TSRANGE,
+    EXCLUDE USING GIST (
+        room WITH =,
+        during WITH &&
+    )
+);
+🧩 Add Constraints After Table Creation
+Add NOT NULL:
+
+sql
+Copy
+Edit
+ALTER TABLE employees ALTER COLUMN name SET NOT NULL;
+Add UNIQUE:
+
+sql
+Copy
+Edit
+ALTER TABLE employees ADD CONSTRAINT unique_email UNIQUE(email);
+Add FOREIGN KEY:
+
+sql
+Copy
+Edit
+ALTER TABLE employees
+ADD CONSTRAINT fk_dept FOREIGN KEY (department_id) REFERENCES departments(dept_id);
+yaml
+Copy
+Edit
+
+---
+
+Would you like me to combine this and the previous one (data types) into a single `.md` file too?
+
+
+
+
+
+
+
+
+Ask ChatGPT
+
+
+
+Tools
+
+
+

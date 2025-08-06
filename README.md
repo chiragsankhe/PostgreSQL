@@ -795,4 +795,60 @@ CREATE TABLE enrollments (
   PRIMARY KEY (student_id, course_id)
 );
 ```
+--- 
+
+## 🔗 Types of JOINs in PostgreSQL
++ In PostgreSQL, JOIN is used to combine rows from two or more tables based on a related column, usually using foreign keys.
+
+### 1. ✅ INNER JOIN
+Returns rows only when there is a match in both tables.
+```
+SELECT employees.name, departments.dept_name
+FROM employees
+INNER JOIN departments ON employees.dept_id = departments.dept_id;
+```
++ 📌 Only matching rows from both employees and departments.
+
+### 2. ✅ LEFT JOIN (or LEFT OUTER JOIN)
++ Returns all rows from the left table and matched rows from the right table.
+
++ If no match, NULLs will appear from the right table.
+```
+SELECT employees.name, departments.dept_name
+FROM employees
+LEFT JOIN departments ON employees.dept_id = departments.dept_id;
+```
++ 📌 Shows all employees, even if not assigned to a department.
+
+### 3. ✅ RIGHT JOIN (or RIGHT OUTER JOIN)
+Returns all rows from the right table and matched rows from the left table.
+```
+SELECT employees.name, departments.dept_name
+FROM employees
+RIGHT JOIN departments ON employees.dept_id = departments.dept_id;
+```
++ 📌 Shows all departments, even if they have no employees.
+
+### 4. ✅ FULL JOIN (or FULL OUTER JOIN)
++ Returns all rows when there is a match in either left or right table.
+
++ Non-matching parts are filled with NULL.
+```
+SELECT employees.name, departments.dept_name
+FROM employees
+FULL JOIN departments ON employees.dept_id = departments.dept_id;
+```
++ 📌 Shows everything from both tables — even if unmatched.
+
+### 5. ✅ CROSS JOIN
++ Returns the Cartesian product of both tables.
+
++ Every row from table A is combined with every row from table B.
+
+```
+SELECT a.name, b.course_name
+FROM students a
+CROSS JOIN courses b;
+```
+📌 Be careful! Can produce a large number of rows.
 

@@ -385,9 +385,81 @@ ADD CONSTRAINT fk_dept FOREIGN KEY (department_id) REFERENCES departments(dept_i
 ---
 
 
+# 📘 Common PostgreSQL Clauses
+### 🔹 SELECT
++ Used to retrieve data from a table.
+```
+SELECT * FROM employees;
+SELECT name, salary FROM employees;
+```
+### 🔹 WHERE
+Filters rows based on a condition.
+```
+SELECT * FROM employees WHERE salary > 50000;
+```
+### 🔹 ORDER BY
+Sorts the result set by one or more columns.
+```
+SELECT * FROM employees ORDER BY hire_date DESC;
+```
+### 🔹 GROUP BY
+Groups rows sharing a property (often used with aggregate functions).
+```
+SELECT dept, COUNT(*) FROM employees GROUP BY dept;
+```
+### 🔹 HAVING
++ Filters grouped records (used with GROUP BY).
 
+```
+SELECT dept, AVG(salary) 
+FROM employees 
+GROUP BY dept 
+HAVING AVG(salary) > 60000;
+```
+### 🔹 LIMIT and OFFSET
+Limits the number of rows returned and skips rows.
+```
+SELECT * FROM employees LIMIT 10 OFFSET 5;
+```
+### 🔹 DISTINCT
+Removes duplicate values.
+```
+SELECT DISTINCT dept FROM employees;
+```
+### 🔹 INSERT INTO
+Inserts new data into a table.
+```
+INSERT INTO employees (fname, lname, email, dept, salary)
+VALUES ('John', 'Doe', 'john.doe@example.com', 'IT', 60000);
+```
+### 🔹 UPDATE
+Modifies existing records.
+```
+UPDATE employees SET salary = salary + 5000 WHERE dept = 'IT';
+```
+### 🔹 DELETE
+Removes records from a table.
+```
+DELETE FROM employees WHERE salary < 30000;
+```
+### 🔹 JOIN (INNER, LEFT, RIGHT, FULL)
+Combines rows from two or more tables based on a related column.
+```
+SELECT e.fname, d.dept_name
+FROM employees e
+JOIN departments d ON e.dept = d.dept_id;
+```
+### 🔹 IN / BETWEEN
+Match values in a list or a range.
+```
+SELECT * FROM employees WHERE dept IN ('HR', 'IT');
+SELECT * FROM employees WHERE salary BETWEEN 40000 AND 70000;
+```
+### 🔹 LIKE / ILIKE
+Pattern matching (ILIKE is case-insensitive).
 
-
-
-
-
+```
+SELECT * FROM employees WHERE email LIKE '%@gmail.com';
+SELECT * FROM employees WHERE fname ILIKE 'j%';
+```
+---

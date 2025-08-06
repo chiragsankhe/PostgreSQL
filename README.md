@@ -677,6 +677,49 @@ ALTER TABLE employees
 DROP CONSTRAINT chk_salary;
 ```
 
+---
+## 🎯 PostgreSQL CASE Expression
+The CASE expression is used to add conditional logic in SQL queries, similar to if-else statements in programming.
 
+### 🔹 Syntax
+```
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    ...
+    ELSE resultN
+END
+```
+### ✅ Example 1: Salary Grade Example
+```
+SELECT emp_id, name, salary,
+  CASE 
+    WHEN salary >= 100000 THEN 'High'
+    WHEN salary >= 50000 THEN 'Medium'
+    ELSE 'Low'
+  END AS salary_grade
+FROM employees;
+```
++ This assigns a salary grade based on salary value.
 
+### ✅ Example 2: Using CASE in UPDATE
+```
+UPDATE employees
+SET dept = 
+  CASE 
+    WHEN emp_id = 1 THEN 'HR'
+    WHEN emp_id = 2 THEN 'IT'
+    ELSE dept
+  END;
+```
++ Conditionally update column values.
+
+### ✅ Example 3: CASE with Aggregation
+```
+SELECT 
+  dept,
+  COUNT(CASE WHEN salary > 50000 THEN 1 END) AS high_earners
+FROM employees
+GROUP BY dept;
+```
 

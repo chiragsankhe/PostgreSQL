@@ -500,3 +500,24 @@ SELECT dept, AVG(salary)
 FROM employees 
 GROUP BY dept;
 ```
+--- 
+# GROUP BY 
+
+### 🔶 What is GROUP BY?
++ The GROUP BY clause is used to group rows that have the same values in one or more columns.
++  It's commonly used with aggregate functions like `COUNT()`,` SUM()` ,` AVG()`,` MAX()` , and ` MIN()`.
+
+🧠 Syntax:
+```
+SELECT column_name, aggregate_function(column_name)
+FROM table_name
+GROUP BY column_name;
+```
+
++ Now use GROUP BY to find the average salary for each department:
+
+```
+SELECT dept, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY dept;
+```

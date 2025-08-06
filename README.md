@@ -521,3 +521,56 @@ SELECT dept, AVG(salary) AS avg_salary
 FROM employees
 GROUP BY dept;
 ```
+--- 
+## 🔤 PostgreSQL String Functions
+PostgreSQL provides a rich set of built-in string functions to manipulate and query string/text data.
+
+### 🔹 LENGTH(str)
+Returns the number of characters in a string.
+```
+SELECT LENGTH('PostgreSQL'); -- 10
+```
+### 🔹 UPPER(str) and LOWER(str)
+Converts string to uppercase or lowercase.
+```
+SELECT UPPER('postgres'); -- POSTGRES
+SELECT LOWER('POSTGRES'); -- postgres
+```
+#### 🔹 CONCAT(str1, str2, ...)
+Joins multiple strings into one.
+```
+SELECT CONCAT('Hello', ' ', 'World'); -- Hello World
+```
+### 🔹 SUBSTRING(str FROM start FOR length)
+Extracts part of a string.
+```
+SELECT SUBSTRING('PostgreSQL' FROM 1 FOR 4); -- Post
+```
+### 🔹 TRIM(str)
+Removes leading and trailing spaces.
+```
+SELECT TRIM('   hello   '); -- hello
+```
+### 🔹 REPLACE(str, from, to)
+Replaces all occurrences of a substring.
+
+```
+SELECT REPLACE('I like SQL', 'SQL', 'PostgreSQL');
+```
+-- I like PostgreSQL
+### 🔹 POSITION(sub IN str)
+Finds the position of the first occurrence of a substring.
+```
+SELECT POSITION('gre' IN 'PostgreSQL'); -- 5
+```
+### 🔹 INITCAP(str)
+Capitalizes the first letter of each word.
+
+```
+SELECT INITCAP('hello world'); -- Hello World
+```
+### 🔹 REVERSE(str)
+Reverses a string.
+```
+SELECT REVERSE('abc'); -- cba
+```

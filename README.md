@@ -852,3 +852,83 @@ CROSS JOIN courses b;
 ```
 📌 Be careful! Can produce a large number of rows.
 
+---
+
+## 📘 Views in PostgreSQL
+### ✅ What is a View?
++ A View is a virtual table in PostgreSQL.
++ It is not stored physically like a table but shows data based on a SQL query.
+
+### 📌 Benefits of Views:
++ Simplify complex queries
+
++ Improve security by exposing only selected data
+
++ Reuse frequently used queries
+
++ Help maintain consistency
+
+### ✅ Syntax to Create a View:
+```
+CREATE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+```
+#### 🧪 Example:
+Suppose we have a table called employees:
+```
+CREATE TABLE employees (
+  emp_id SERIAL PRIMARY KEY,
+  name VARCHAR(50),
+  department VARCHAR(50),
+  salary INT
+);
+```
+### Insert some sample data:
+```
+INSERT INTO employees (name, department, salary) VALUES
+('Alice', 'HR', 40000),
+('Bob', 'IT', 55000),
+('John', 'Finance', 48000);
+```
+Now, create a view to show only high-salary employees:
+
+```
+CREATE VIEW high_salary_employees AS
+SELECT name, department, salary
+FROM employees
+WHERE salary > 50000;
+```
+🧾 Using the View:
+```
+SELECT * FROM high_salary_employees;
+```
+
+
+### ✏️ Updating a View:
++ You can create updatable views, but only if:
+
++ The view is based on a single table.
+
++ It doesn't use aggregation, GROUP BY, DISTINCT, etc.
+
+Example:
+
+```
+UPDATE high_salary_employees
+SET salary = 57000
+WHERE name = 'Bob';
+```
+### ❌ Dropping a View:
+```
+DROP VIEW view_name;
+```
+Example:
+```
+DROP VIEW high_salary_employees;
+```
+🧠 Tip:
+You can also use CREATE OR REPLACE VIEW to update a view without dropping it.
+
+

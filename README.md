@@ -722,4 +722,77 @@ SELECT
 FROM employees
 GROUP BY dept;
 ```
+--- 
+
+## 🔗 Types of Relationships in PostgreSQL
+### 1. One-to-One (1:1)
++ One row in Table A is linked to exactly one row in Table B.
+
+Use a unique foreign key.
+```
+-- Table: users
+CREATE TABLE users (
+  user_id SERIAL PRIMARY KEY,
+  name VARCHAR(50)
+);
+```
+
+-- Table: user_profiles
+```
+CREATE TABLE user_profiles (
+  profile_id SERIAL PRIMARY KEY,
+  user_id INT UNIQUE REFERENCES users(user_id),
+  bio TEXT
+);
+```
+### 2. One-to-Many (1:N)
+One row in Table A is linked to many rows in Table B.
+
+Use a foreign key in the "many" table.
+
+-- Table: departments
+```
+CREATE TABLE departments (
+  dept_id SERIAL PRIMARY KEY,
+  dept_name VARCHAR(50)
+);
+```
+
+-- Table: employees
+```
+CREATE TABLE employees (
+  emp_id SERIAL PRIMARY KEY,
+  name VARCHAR(50),
+  dept_id INT REFERENCES departments(dept_id)
+);
+```
+### 3. Many-to-Many (M:N)
+Many rows in Table A are linked to many rows in Table B.
+
+Requires a junction (bridge) table with two foreign keys.
+
+-- Table: students
+```
+CREATE TABLE students (
+  student_id SERIAL PRIMARY KEY,
+  name VARCHAR(50)
+);
+```
+
+-- Table: courses
+```
+CREATE TABLE courses (
+  course_id SERIAL PRIMARY KEY,
+  course_name VARCHAR(50)
+);
+```
+
+-- Table: enrollments (junction table)
+```
+CREATE TABLE enrollments (
+  student_id INT REFERENCES students(student_id),
+  course_id INT REFERENCES courses(course_id),
+  PRIMARY KEY (student_id, course_id)
+);
+```
 

@@ -931,4 +931,56 @@ DROP VIEW high_salary_employees;
 🧠 Tip:
 You can also use CREATE OR REPLACE VIEW to update a view without dropping it.
 
+---
+
+##  📘 PostgreSQL HAVING Clause
+### ✅ What is HAVING?
+The HAVING clause is used with `GROUP BY` to filter the groups created by the GROUP BY clause.
+
++ It's like WHERE, but for aggregated data (e.g., SUM(), COUNT(), AVG()).
+
+🆚 Difference Between WHERE and HAVING
+|WHERE	| HAVING|
+|-----|----------|
+|Filters rows|	Filters groups|
+|Used before grouping|	Used after grouping|
+|Cannot use aggregates|	Can use aggregate functions|
+
+🧪 Example:
+Suppose you have a table named employees:
+
+```
+emp_id | department | salary
+-------|------------|--------
+1      | HR         | 40000
+2      | IT         | 55000
+3      | HR         | 42000
+4      | IT         | 60000
+5      | Finance    | 30000
+```
+### ✅ Query: Show departments having average salary > 45000
+```
+SELECT department, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department
+HAVING AVG(salary) > 45000;
+```
+🔍 Output:
+--department  |	avg_salary
+--IT          |	57500
+
+### ✅ Combined Example Using WHERE + GROUP BY + HAVING
+```
+SELECT department, COUNT(*) AS emp_count
+FROM employees
+WHERE salary > 30000
+GROUP BY department
+HAVING COUNT(*) >= 2;
+```
++ WHERE salary > 30000: filters rows first
+
++ GROUP BY department: groups remaining rows
+
++ HAVING COUNT(*) >= 2: filters groups with at least 2 employees
+
 

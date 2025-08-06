@@ -630,11 +630,52 @@ DROP CONSTRAINT unique_email;
 ```
 
 
+---
 
 
+## CHECK Constraint in PostgreSQL
+The CHECK constraint in PostgreSQL is used to limit the values that can be placed in a column by defining a condition that must be TRUE for each row.
 
+### 🔹 Syntax:
+```
+CREATE TABLE table_name (
+    column_name data_type CHECK (condition)
+);
+```
+OR (with ALTER TABLE):
 
+```
+ALTER TABLE table_name
+ADD CONSTRAINT constraint_name CHECK (condition);
+```
+### 🔹 Example 1: Inline Check While Creating Table
+```
+CREATE TABLE employees (
+    emp_id SERIAL PRIMARY KEY,
+    name VARCHAR(50),
+    salary INT CHECK (salary >= 30000)
+);
+```
++ This ensures salary must be at least 30000.
 
+### 🔹 Example 2: Add CHECK Constraint Later
+```
+ALTER TABLE employees
+ADD CONSTRAINT chk_salary CHECK (salary >= 30000);
+```
+### 🔹 Example 3: Multiple Conditions
+```
+CREATE TABLE students (
+    id SERIAL PRIMARY KEY,
+    age INT CHECK (age BETWEEN 18 AND 60),
+    grade CHAR(1) CHECK (grade IN ('A', 'B', 'C', 'D', 'F'))
+);
+```
+### 🔹 Drop a CHECK Constraint
+```
+ALTER TABLE employees
+DROP CONSTRAINT chk_salary;
+```
 
 
 

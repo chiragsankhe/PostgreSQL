@@ -463,3 +463,40 @@ SELECT * FROM employees WHERE email LIKE '%@gmail.com';
 SELECT * FROM employees WHERE fname ILIKE 'j%';
 ```
 ---
+
+# 📊 PostgreSQL Aggregate Functions
++ Aggregate functions perform ` calculations `  on a set of rows and return a single value.
++ These are commonly used with GROUP BY and other clauses.
+
+### 🔹 COUNT()
+Returns the number of rows.
+```
+SELECT COUNT(*) FROM employees;
+SELECT COUNT(DISTINCT dept) FROM employees;
+```
+### 🔹 SUM()
+Returns the total sum of a numeric column.
+```
+SELECT SUM(salary) FROM employees;
+```
+### 🔹 AVG()
++ Returns the average value of a numeric column.
+```
+SELECT AVG(salary) FROM employees;
+```
+### 🔹 MIN()
+Returns the minimum value in a column.
+```
+SELECT MIN(salary) FROM employees;
+```
+### 🔹 MAX()
+Returns the maximum value in a column.
+```
+SELECT MAX(salary) FROM employees;
+```
+### 🔹 Example with GROUP BY:
+```
+SELECT dept, AVG(salary) 
+FROM employees 
+GROUP BY dept;
+```

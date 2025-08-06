@@ -574,3 +574,68 @@ Reverses a string.
 ```
 SELECT REVERSE('abc'); -- cba
 ```
+---
+
+## ALTER TABLE in PostgreSQL
++ The ALTER TABLE statement is used to modify the structure of an existing table — such as adding/removing columns, changing data types, renaming columns, or applying constraints.
+
+### 🔹 1. Add a Column
+```
+ALTER TABLE employees
+ADD COLUMN phone_number VARCHAR(15);
+```
+### 🔹 2. Drop a Column
+```
+ALTER TABLE employees
+DROP COLUMN phone_number;
+```
+### 🔹 3. Rename a Column
+```
+ALTER TABLE employees
+RENAME COLUMN dept TO department;
+```
+### 🔹 4. Change Data Type
+```
+ALTER TABLE employees
+ALTER COLUMN salary TYPE DECIMAL(10, 2);
+```
+### 🔹 5. Set Default Value
+```
+ALTER TABLE employees
+ALTER COLUMN hire_date SET DEFAULT CURRENT_DATE;
+```
+### 🔹 6. Drop Default Value
+```
+ALTER TABLE employees
+ALTER COLUMN hire_date DROP DEFAULT;
+```
+### 🔹 7. Rename a Table
+```
+ALTER TABLE employees
+RENAME TO staff;
+```
+### 🔹 8. Add a Constraint (e.g. NOT NULL, UNIQUE, CHECK)
+```
+ALTER TABLE employees
+ALTER COLUMN email SET NOT NULL;
+```
+```
+ALTER TABLE employees
+ADD CONSTRAINT unique_email UNIQUE(email);
+```
+### 🔹 9. Drop a Constraint
+```
+ALTER TABLE employees
+DROP CONSTRAINT unique_email;
+```
+
+
+
+
+
+
+
+
+
+
+
